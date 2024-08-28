@@ -21,7 +21,7 @@ const formSchema = z.object({
 
 type formData = z.infer<typeof formSchema>;
 
-const addFriendDialog = () => {
+const AddFriendDialog = () => {
   const { mutate: createRequest, pending } = useMutationState(api.request.create);
 
   const form = useForm<formData>({
@@ -86,4 +86,4 @@ const addFriendDialog = () => {
   );
 };
 
-export default addFriendDialog;
+export default AddFriendDialog;
