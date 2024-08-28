@@ -1,6 +1,6 @@
 import { httpRouter } from "convex/server";
 import { httpAction } from "./_generated/server";
-import { WebhookEvent } from "@clerk/backend"; //"@clerk/nextjs/server";
+import { WebhookEvent } from "@clerk/backend"; //fix import error "@clerk/nextjs/server";
 import { Webhook } from "svix";
 import { internal } from "./_generated/api";
 
