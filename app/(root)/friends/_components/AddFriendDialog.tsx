@@ -19,15 +19,17 @@ const formSchema = z.object({
   email: z.string().min(1, "This field can't be empty").email("Please enter a valid email"),
 });
 
+type formData = z.infer<typeof formSchema>;
+
 const addFriendDialog = () => {
   const { mutate: createRequest, pending } = useMutationState(api.request.create);
 
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<formData>({
     resolver: zodResolver(formSchema),
     defaultValues: { email: "" },
   });
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: formData) => {
     await createRequest({ email: values.email })
       .then(() => {
         form.reset();
